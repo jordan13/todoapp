@@ -10,4 +10,3 @@
 	</div>
 </body>
 </html>
-// last video was video 2 not 1 
