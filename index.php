@@ -3,6 +3,8 @@
 <head>
    <title>Jordan's To-Do List</title>
    <link rel="stylesheet" type="text/css" href="css/main.css">
+   <link rel="stylesheet" type="text/css" href="css/normalize.css">
+   <link rel="stylesheet" type="text/css" href="css/reset.css">
 </head>
 <body>
    <div class="wrap">
@@ -11,20 +13,20 @@
         <?php require("includes/connect.php"); 
         $mysqli = new mysqli('localhost', 'root', 'root'. 'tasks');
         $query = "SELECT * FROM tasks ORDER BY date ASC, time ASC";
-        if ($result = $mysqli->($query)) {
+        if ($result = $mysqli->query($query)) {
         	$numrows = $result->num_rows;
         	if($numrows>0){
         		while($row = $result->fetch_assoc()){
         			$task_id = $row['id'];
         			$task_name = $row["task"];
 
-        			echo "<li>
-        			<span>'.$task_name'
-        			";
+        			echo '<li>
+        			<span>'.$task_name.' </span>
+        			<img id="'.$task_id.'" class="delete-button" width="10px" src="images/close.svg"/>
+        			</li>';
         		}
         	}
         }
-
 
 
         ?>
